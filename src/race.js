@@ -340,11 +340,11 @@ class Race extends Phaser.Scene {
     let ha = fa; { let d = P.a - fa; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; ha = fa + d * .35; }
     if (this.camA === undefined) this.camA = ha;
     { let d = ha - this.camA; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; this.camA += d * (1 - Math.exp(-dt * 2.6)); }
-    const sf = Math.min(1, sp / 700), ux = Math.cos(this.camA), uy = Math.sin(this.camA) * KY, ul = Math.hypot(ux, uy) || 1;
-    const tlx = ux / ul * vw * .27 * sf, tly = uy / ul * vh * .30 * sf; const k = 1 - Math.exp(-dt * 2.4);
+    const sf = Math.min(1, sp / 500), ux = Math.cos(this.camA), uy = Math.sin(this.camA) * KY, ul = Math.hypot(ux, uy) || 1;
+    const tlx = ux / ul * vw * .40 * sf, tly = uy / ul * vh * .42 * sf; const k = 1 - Math.exp(-dt * 2.4);
     this.lookX += (tlx - this.lookX) * k; this.lookY += (tly - this.lookY) * k;
-    // close chase camera (v1.3: ~1.85x); eases out subtly with speed and on boost so upcoming turns stay readable
-    const z = CAM_Z0 - Math.min(.16, sp / 8000) - (P.boosting ? .05 : 0); this.camZoom += (z - this.camZoom) * (1 - Math.exp(-dt * 1.8));
+    // close chase camera (v1.4: ~2.7x); eases out subtly with speed and on boost so upcoming turns stay readable
+    const z = CAM_Z0 - Math.min(.22, sp / 6000) - (P.boosting ? .07 : 0); this.camZoom += (z - this.camZoom) * (1 - Math.exp(-dt * 1.8));
     cam.setZoom(this.camZoom);
     const tx = P.x + this.lookX, ty = this.sy(P.y) + this.lookY, k2 = 1 - Math.exp(-dt * 9);
     const cx = cam.midPoint.x + (tx - cam.midPoint.x) * k2, cy = cam.midPoint.y + (ty - cam.midPoint.y) * k2; cam.centerOn(cx, cy);

@@ -3,7 +3,7 @@ const U = 40;                                   // world px per unit (Blender un
 const ELEV = 55 * Math.PI / 180, KY = Math.sin(ELEV), KZ = Math.cos(ELEV);
 const GW = 1920, GH = 1080;
 const CAR_RES = 384, CAR_K = 224 / CAR_RES;      // car sprite frame size (Blender render res); CAR_K keeps on-screen size constant
-const CAM_Z0 = +(new URLSearchParams(location.search).get('camz') || 1.85);  // chase camera base zoom
+const CAM_Z0 = +(new URLSearchParams(location.search).get('camz') || 2.7);  // chase camera base zoom
 // cars: s = top speed px/s, a = acceleration, g = grip, t = turn rate, d = drift control, frames rendered with ortho o (Blender units over 256 px)
 const CARS = {
   mini:   { name: 'Rally Mini',   num: '01', col: 0xd8241c, o: 6.5, s: 1080, a: 900, g: 9.0, t: 3.1, d: 1.0, price: 0 },
